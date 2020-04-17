@@ -2,12 +2,15 @@ import io
 import os
 from os import path
 
+# ======= Configuration =======
 # New filenames without special characters, each line is a name of one file
 filenames_path = "../resources/names.txt"
 # Folder where the original files are located
 files_input_path = "../resources/Files/"
 # Folder where the rename files will be inserted
 files_output_path = "../resources/Files/"
+# Prefix of the original files need to change
+file_prefix = "teste2-"
 
 
 def rename():
@@ -40,5 +43,5 @@ def special_cases(file_prefix, n):
 
 
 if __name__ == "__main__":
-    special_cases("teste2-", 9)
+    special_cases(file_prefix, 9)
     rename()
