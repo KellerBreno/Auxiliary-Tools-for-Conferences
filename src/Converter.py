@@ -33,9 +33,22 @@ def rename():
         i += 1
 
 
-# Add 0 prefix to the filename
-def special_cases(file_prefix, n):
+# Function: Add 0 prefix to the filename
+# Parameter: file_prefix = the prefix of the files
+# Parameter: n = number of files
+def special_cases1digit(file_prefix, n):
     for i in range(1, n + 1):
+        old_filename = files_input_path + file_prefix + i.__str__() + ".pdf"
+        new_filename = files_input_path + file_prefix + "00" + i.__str__() + ".pdf"
+        print("renamed: " + old_filename + ", to: " + new_filename)
+        os.rename(old_filename, new_filename)
+
+
+# Function: Add 0 prefix to the filename
+# Parameter: file_prefix = the prefix of the files
+# Parameter: n = number of files
+def special_cases2digits(file_prefix, n):
+    for i in range(10, n + 1):
         old_filename = files_input_path + file_prefix + i.__str__() + ".pdf"
         new_filename = files_input_path + file_prefix + "0" + i.__str__() + ".pdf"
         print("renamed: " + old_filename + ", to: " + new_filename)
@@ -43,5 +56,7 @@ def special_cases(file_prefix, n):
 
 
 if __name__ == "__main__":
-    special_cases(file_prefix, 9)
+    special_cases1digit(file_prefix, 9)
+    # In case you have fewer files than 9 comment the line above
+    special_cases2digits(file_prefix, 99)
     rename()
