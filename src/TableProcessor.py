@@ -26,7 +26,7 @@ def proccess(path, minimum_occurrence):
     namelist = set()
     for name in namedict.keys():
         if namedict[name] >= minimum_occurrence:
-            namelist.add(name)
+            namelist.add(name.title())
     return namelist
 
 
