@@ -7,21 +7,15 @@ path = "../resources/attendance.csv"
 minimum_occurrence = 2
 
 
+# Function: Generate a set with names from an attendence table
+# Parameter: path = path of the table containing the data
+# Parameter: minimum_occurrence = value of minimum number of occurrences to register the presence
 def proccess(path, minimum_occurrence):
     text = io.open(path, "r+", encoding="utf8")
     cont = 0
-    # namelist = set()
-    # for line in text:
-    #     if cont >= 2:
-    #         line = line.rstrip()
-    #         names = line.split(",")
-    #         for name in names:
-    #             if len(name) != 0:
-    #                 namelist.add(name)
-    #     cont += 1
-    # return namelist
     namedict = dict()
     for line in text:
+        # Ignore the first two line of the table format
         if cont >= 2:
             line = line.rstrip()
             names = line.split(",")

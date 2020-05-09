@@ -33,7 +33,7 @@ def rename():
         i += 1
 
 
-# Function: Add 0 prefix to the filename
+# Function: Add 00 prefix to the filename
 # Parameter: file_prefix = the prefix of the files
 # Parameter: n = number of files
 def special_cases1digit(file_prefix, n):
