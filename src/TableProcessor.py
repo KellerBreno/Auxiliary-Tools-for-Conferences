@@ -2,7 +2,9 @@ import io
 
 # ======= Configuration =======
 # Path to the table with the names of those present in the call
-path = "../resources/attendance.csv"
+input_path = "../resources/attendance.csv"
+# Path to the table with the names of those present in the call
+output_path = "../resources/names.csv"
 # Minimum number of occurrences to register the presence
 minimum_occurrence = 2
 
@@ -30,7 +32,14 @@ def proccess(path, minimum_occurrence):
     return namelist
 
 
-if __name__ == "__main__":
-    names = proccess(path, minimum_occurrence)
+def export(output_path, names):
+    output_path = open(output_path, "w+", encoding="utf8")
+    output_path.write("Nomes\n")
     for name in names:
-        print(name)
+        output_path.write(name)
+        output_path.write("\n")
+
+
+if __name__ == "__main__":
+    names = proccess(input_path, minimum_occurrence)
+    export(output_path, names)
