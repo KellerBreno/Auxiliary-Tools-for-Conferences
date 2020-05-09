@@ -12,8 +12,8 @@ minimum_occurrence = 2
 # Function: Generate a set with names from an attendence table
 # Parameter: path = path of the table containing the data
 # Parameter: minimum_occurrence = value of minimum number of occurrences to register the presence
-def proccess(path, minimum_occurrence):
-    text = io.open(path, "r+", encoding="utf8")
+def proccess(input_path, minimum_occurrence):
+    text = io.open(input_path, "r+", encoding="utf8")
     cont = 0
     namedict = dict()
     for line in text:
@@ -32,12 +32,12 @@ def proccess(path, minimum_occurrence):
     return namelist
 
 
-def export(output_path, names):
-    output_path = open(output_path, "w+", encoding="utf8")
-    output_path.write("Nomes\n")
-    for name in names:
-        output_path.write(name)
-        output_path.write("\n")
+def export(output_path, namelist):
+    output_file = open(output_path, "w+", encoding="utf8")
+    output_file.write("Nomes\n")
+    for name in namelist:
+        output_file.write(name)
+        output_file.write("\n")
 
 
 if __name__ == "__main__":
