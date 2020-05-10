@@ -28,6 +28,9 @@ def proccess(input_path, minimum_occurrence):
     return namelist
 
 
+# Function: Generate a set with names from an logged chat
+# Parameter: output_path = path of csv with the names will be saved
+# Parameter: namelist = set with the names to be write
 def export(output_path, namelist):
     output_file = open(output_path, "w+", encoding="utf8")
     output_file.write("Nomes\n")
