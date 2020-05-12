@@ -21,23 +21,29 @@ def proccess(input_path, minimum_occurrence):
         if found is not None:
             name = found.group(0).replace(":", "")
             namedict[name] = namedict.setdefault(name, 0) + 1
-    namelist = set()
+    nameset = set()
     for name in namedict.keys():
         if namedict[name] >= minimum_occurrence:
-            namelist.add(name.title())
-    return namelist
+            nameset.add(name.title())
+    return nameset
 
 
 # Function: Generate a set with names from an logged chat
 # Parameter: output_path = path of csv with the names will be saved
 # Parameter: namelist = set with the names to be write
-def export(output_path, namelist):
+def export(output_path, nameset):
     output_file = open(output_path, "w+", encoding="utf8")
     output_file.write("Nomes\n")
+    namelist = list()
+    for name in nameset:
+        namelist.append(name)
+    namelist.sort()
     for name in namelist:
         output_file.write(name)
         output_file.write("\n")
 
+
+# TODO special cases: replace "você" to the user who has created the logfile
 
 if __name__ == "__main__":
     names = proccess(input_path, minimum_occurrence)

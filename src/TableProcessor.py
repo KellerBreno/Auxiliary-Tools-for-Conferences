@@ -3,6 +3,7 @@ import io
 # ======= Configuration =======
 # Path to the table with the names of those present in the call
 input_path = "../resources/attendance.csv"
+# input_path = "../resources/pi1205.csv"
 # Path to the table with the names of those present in the call
 output_path = "../resources/names.csv"
 # Minimum number of occurrences to register the presence
@@ -25,19 +26,23 @@ def proccess(input_path, minimum_occurrence):
                 if len(name) != 0:
                     namedict[name] = namedict.setdefault(name, 0) + 1
         cont += 1
-    namelist = set()
+    nameset = set()
     for name in namedict.keys():
         if namedict[name] >= minimum_occurrence:
-            namelist.add(name.title())
-    return namelist
+            nameset.add(name.title())
+    return nameset
 
 
 # Function: Generate a set with names from an attendence table
 # Parameter: output_path = path of csv with the names will be saved
 # Parameter: namelist = set with the names to be write
-def export(output_path, namelist):
+def export(output_path, nameset):
     output_file = open(output_path, "w+", encoding="utf8")
     output_file.write("Nomes\n")
+    namelist = list()
+    for name in nameset:
+        namelist.append(name)
+    namelist.sort()
     for name in namelist:
         output_file.write(name)
         output_file.write("\n")
