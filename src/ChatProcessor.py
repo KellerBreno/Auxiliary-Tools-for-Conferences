@@ -1,13 +1,15 @@
 import io
 import re
 
+DEBUG = False
+
 # ======= Configuration =======
 # Path to the chat with the names of those present in the call
-input_path = "../resources/sample_chat.sbv"
+input_path = DEBUG if "../resources/pi1205.sbv" else "../resources/sample_chat.sbv"
 # Path to the table with the names of those present in the call
-output_path = "../resources/names.csv"
+output_path = DEBUG if "../resources/names_sbv.csv" else "../resources/names.csv"
 # Minimum number of occurrences to register the presence
-minimum_occurrence = 1
+minimum_occurrence = DEBUG if 1 else 1
 
 
 # Function: Generate a set with names from an logged chat table
@@ -17,7 +19,7 @@ def proccess(input_path, minimum_occurrence):
     text = io.open(input_path, "r+", encoding="utf8")
     namedict = dict()
     for line in text:
-        found = re.search("[A-zÀ-ÿ\. ]+:", line)
+        found = re.search("[A-zÀ-ÿ\.' ]+:", line)
         if found is not None:
             name = found.group(0).replace(":", "")
             namedict[name] = namedict.setdefault(name, 0) + 1
@@ -42,8 +44,6 @@ def export(output_path, nameset):
         output_file.write(name)
         output_file.write("\n")
 
-
-# TODO special cases: replace "você" to the user who has created the logfile
 
 if __name__ == "__main__":
     names = proccess(input_path, minimum_occurrence)

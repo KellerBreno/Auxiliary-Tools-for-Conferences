@@ -1,13 +1,14 @@
 import io
 
+DEBUG = False
+
 # ======= Configuration =======
 # Path to the table with the names of those present in the call
-input_path = "../resources/attendance.csv"
-# input_path = "../resources/pi1205.csv"
+input_path = DEBUG if "../resources/pi1205.csv" else "../resources/sample_chat.csv"
 # Path to the table with the names of those present in the call
-output_path = "../resources/names.csv"
+output_path = DEBUG if "../resources/names_table.csv" else "../resources/names.csv"
 # Minimum number of occurrences to register the presence
-minimum_occurrence = 2
+minimum_occurrence = DEBUG if 4 else 2
 
 
 # Function: Generate a set with names from an attendence table
