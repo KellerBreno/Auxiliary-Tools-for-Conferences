@@ -4,11 +4,11 @@ DEBUG = False
 
 # ======= Configuration =======
 # Path to the table with the names of those present in the call
-input_path = DEBUG if "../resources/pi1205.csv" else "../resources/sample_chat.csv"
+input_path = "../resources/attendance.csv" if DEBUG else "../resources/ed0805.csv"
 # Path to the table with the names of those present in the call
-output_path = DEBUG if "../resources/names_table.csv" else "../resources/names.csv"
+output_path = "../resources/names.csv" if DEBUG else "../resources/names_table.csv"
 # Minimum number of occurrences to register the presence
-minimum_occurrence = DEBUG if 4 else 2
+minimum_occurrence = 2 if DEBUG else 3
 
 
 # Function: Generate a set with names from an attendence table

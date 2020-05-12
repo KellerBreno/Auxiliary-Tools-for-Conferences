@@ -5,11 +5,11 @@ DEBUG = False
 
 # ======= Configuration =======
 # Path to the chat with the names of those present in the call
-input_path = DEBUG if "../resources/pi1205.sbv" else "../resources/sample_chat.sbv"
+input_path = "../resources/sample_chat.sbv" if DEBUG else "../resources/pi1205.sbv"
 # Path to the table with the names of those present in the call
-output_path = DEBUG if "../resources/names_sbv.csv" else "../resources/names.csv"
+output_path = "../resources/names.csv" if DEBUG else "../resources/names_sbv.csv"
 # Minimum number of occurrences to register the presence
-minimum_occurrence = DEBUG if 1 else 1
+minimum_occurrence = 1 if DEBUG else 1
 
 
 # Function: Generate a set with names from an logged chat table
