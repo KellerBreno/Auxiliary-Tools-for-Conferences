@@ -1,14 +1,16 @@
 import io
 
+from unidecode import unidecode
+
 DEBUG = False
 
 # ======= Configuration =======
 # Path to the table with the names of those present in the call
-input_path = "../resources/attendance.csv" if DEBUG else "../resources/ed0805.csv"
+input_path = "../resources/attendance.csv" if DEBUG else "../resources/ed2905.csv"
 # Path to the table with the names of those present in the call
 output_path = "../resources/names.csv" if DEBUG else "../resources/names_table.csv"
 # Minimum number of occurrences to register the presence
-minimum_occurrence = 2 if DEBUG else 3
+minimum_occurrence = 2 if DEBUG else 10
 
 
 # Function: Generate a set with names from an attendence table
@@ -22,7 +24,7 @@ def proccess(input_path, minimum_occurrence):
         # Ignore the first two line of the table format
         if cont >= 2:
             line = line.rstrip()
-            names = line.split(",")
+            names = line.split(";")
             for name in names:
                 if len(name) != 0:
                     namedict[name] = namedict.setdefault(name, 0) + 1
@@ -30,7 +32,7 @@ def proccess(input_path, minimum_occurrence):
     nameset = set()
     for name in namedict.keys():
         if namedict[name] >= minimum_occurrence:
-            nameset.add(name.title())
+            nameset.add(unidecode(name.title()))
     return nameset
 
 
